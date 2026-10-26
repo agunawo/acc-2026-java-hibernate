@@ -8,11 +8,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Data
 public class Book {
     @Id
@@ -32,4 +33,6 @@ public class Book {
         this.publicationYear = publicationYear;
         this.available = available;
     }
+    @Enumerated(EnumType.STRING)
+    private BorrowedStatus borrowedStatus = BorrowedStatus.AVAILABLE;
 }

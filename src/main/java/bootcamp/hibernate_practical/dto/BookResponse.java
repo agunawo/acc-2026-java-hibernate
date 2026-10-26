@@ -3,6 +3,7 @@ package bootcamp.hibernate_practical.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import bootcamp.hibernate_practical.entity.BorrowedStatus;
 
 @AllArgsConstructor
 @Getter
@@ -13,4 +14,5 @@ public class BookResponse {
     public String genre;
     public int publicationYear;
     public boolean available;
+    public BorrowedStatus borrowedStatus;
 }
