@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Library — Books</title>
+</head>
+<body>
+<h1>Library Books</h1>
+<p>You are logged in. <a th:href="@{/logout}">Logout</a></p>
+
+<table border="1" cellpadding="6">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Available</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}">1</td>
+        <td th:text="${book.title}">Title</td>
+        <td th:text="${book.author}">Author</td>
+        <td th:text="${book.publicationYear}">2020</td>
+        <td th:text="${book.available}">true</td>
+        <td>
+            <!-- Thymeleaf + Spring Security auto-insert a hidden CSRF token into this form -->
+            <form th:action="@{'/ui/books/' + ${book.id} + '/delete'}" method="post">
+                <button type="submit">Delete (ADMIN only)</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
